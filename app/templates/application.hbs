@@ -1,0 +1,58 @@
+{{#paper-toolbar as |toolbar|}}
+     {{#toolbar.tools}}
+       {{#paper-button}}
+         Go Back
+       {{/paper-button}}
+       <h2>Toolbar with Standard Buttons</h2>
+       <span class="flex"> </span>
+       {{#paper-button raised=true}}
+         Learn More
+       {{/paper-button}}
+       <a href="https://www.youtube.com/user/Easiven" target="_blank">
+         {{#paper-button mini=true aria-label="Favorite"}}
+        {{paper-icon "favorite"}}
+       {{/paper-button}} </a>
+     {{/toolbar.tools}}
+   {{/paper-toolbar}}
+
+<h1 style="color: {{lol}}"> <span class="blue"> {{chef}} </span> Tracker </h1>
+
+<p> Is your favorite <b style="color:{{lol}}"> <span class="blue"> {{chef}} </span> </b> cooking right now? </p>
+<p> Find out with <b style="color:{{lol}}"> <span class="blue"> {{chef}} </span> </b> Tracker, the hottest new
+<b style="color:{{lol}}"> <span class="blue"> {{chef}} </span> </b>-tracking app on the market. </p>
+
+{{input value=lol}} {{input value=chef}} {{input value=deeshes}}
+
+<h3> List of <span class="red"> {{deeshes}}</span>: </h3>
+
+<ul>
+<p>  {{model.length}} <span class="red"> {{deeshes}} </span> total </p>
+<p> {{availableItems.length}} <span class="red"> {{deeshes}} </span> available </p>
+  {{#each model as |dish|}}
+
+    <li>
+      {{dish.name}} is {{if dish.available '' 'not'}} available:
+      <span style="color: {{if dish.available 'blue' 'red'}}"> + </span>
+  </li>
+
+    {{#if dish.available}}
+
+      <li style="color:blue"> {{dish.name}} </li>
+      <button {{action 'enter' dish}}>Exit</button>
+
+    {{else}}
+
+      <li style="color:red"> <s> {{dish.name}} </s> </li>
+      <button {{action 'exit' dish}}>Enter</button>
+      <button {{action 'destroyItem' dish}}>Delete</button>
+
+    {{/if}}
+
+  {{/each}}
+
+</ul>
+
+{{input value=newItem}}
+<button {{action 'saveNewItem' newItem}}> Add </button>
+
+{{outlet}}

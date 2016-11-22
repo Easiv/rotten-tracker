@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'emberproject1',
+    modulePrefix: 'chef-tracker',
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
@@ -20,6 +20,13 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    firebase: {
+      apiKey: "AIzaSyDU3gTnwVgnnPNJizAJPaeHakcvVnKU94U",
+          authDomain: "awesome-ember.firebaseapp.com",
+          databaseURL: "https://awesome-ember.firebaseio.com",
+          storageBucket: "awesome-ember.appspot.com",
+          messagingSenderId: "1063706555655"
     }
   };
 
